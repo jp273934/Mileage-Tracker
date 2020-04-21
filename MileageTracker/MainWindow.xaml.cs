@@ -41,15 +41,29 @@ namespace MileageTracker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var isMileageValid = true;
             var date = Convert.ToDateTime(DeliveryDateDatePicker.SelectedDate);
-            var miles = Convert.ToDouble(MileageTotalTextbox.Text);
+            double miles;
+
+            if(!double.TryParse(MileageTotalTextbox.Text, out miles))
+            {
+                isMileageValid = false;
+                MessageBox.Show("Milease is not a number");
+            }
+
+            if(date == DateTime.MinValue){
+                isMileageValid = false;                           
+                MessageBox.Show("Selected date is invalid");
+            }
 
             var mileage = new Mileage { DeliveryDate = date, Miles = miles };
 
-            _repository.AddMileageRecord(mileage);
+            if (isMileageValid)
+            {
+                 _repository.AddMileageRecord(mileage);
+            }
 
             LoadGrid();
-            MessageBox.Show("Hello");
 
         }
     }
