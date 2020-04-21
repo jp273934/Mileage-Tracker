@@ -25,6 +25,11 @@ namespace MileageTracker
         {
             InitializeComponent();
 
+            LoadGrid();
+        }
+
+        private void LoadGrid()
+        {
             var mileage = new List<Mileage>
             {
                 new Mileage{ DeliveryDate = DateTime.Today, Miles = 1.0},
