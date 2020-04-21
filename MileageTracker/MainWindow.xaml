@@ -1,4 +1,4 @@
-﻿<Window x:Class="MileageTracker.MainWindow"
+﻿<Window x:Name="AddMileageButton" x:Class="MileageTracker.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,12 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="MileageGrid" AutoGenerateColumns="False">
+        <DataGrid x:Name="MileageGrid" AutoGenerateColumns="False" Margin="133,10,155,193">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Delivery Date" Binding="{Binding Path=DeliveryDate, StringFormat='d'}"  />
                 <DataGridTextColumn Header="Miles" Binding="{Binding Path=Miles}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <DatePicker x:Name="DeliveryDateDatePicker" HorizontalAlignment="Left" Margin="117,286,0,0" VerticalAlignment="Top"/>
+        <Label Content="Delivery Date : " HorizontalAlignment="Left" Margin="22,284,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Number of Miles : " HorizontalAlignment="Left" Margin="252,284,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.683,-0.621" FontWeight="Bold"/>
+        <TextBox x:Name="MileageTotalTextbox" HorizontalAlignment="Left" Margin="372,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add Mileage" HorizontalAlignment="Left" Margin="525,288,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.926,-0.132" Click="Button_Click"/>
+        <Label HorizontalAlignment="Left" Margin="133,255,0,0" VerticalAlignment="Top" Content="Total Miles :" FontWeight="Bold"/>
+        <Label x:Name="TotalMilesLabel" HorizontalAlignment="Left" Margin="231,258,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

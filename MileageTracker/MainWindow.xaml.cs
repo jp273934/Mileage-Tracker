@@ -36,6 +36,21 @@ namespace MileageTracker
             var mileage = _repository.GetAllMileages();
 
             MileageGrid.ItemsSource = mileage;
+            TotalMilesLabel.Content = mileage.Sum(m => m.Miles) + " miles";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var date = Convert.ToDateTime(DeliveryDateDatePicker.SelectedDate);
+            var miles = Convert.ToDouble(MileageTotalTextbox.Text);
+
+            var mileage = new Mileage { DeliveryDate = date, Miles = miles };
+
+            _repository.AddMileageRecord(mileage);
+
+            LoadGrid();
+            MessageBox.Show("Hello");
+
         }
     }
 }
