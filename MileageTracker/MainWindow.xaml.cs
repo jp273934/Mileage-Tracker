@@ -1,4 +1,5 @@
 ﻿using MileageTracker.Repository.Entities;
+using MileageTracker.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,20 +22,18 @@ namespace MileageTracker
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MileageRepository _repository;
+
         public MainWindow()
         {
             InitializeComponent();
-
+            _repository = new MileageRepository();
             LoadGrid();
         }
 
         private void LoadGrid()
         {
-            var mileage = new List<Mileage>
-            {
-                new Mileage{ DeliveryDate = DateTime.Today, Miles = 1.0},
-                new Mileage{ DeliveryDate = DateTime.Today, Miles = 3.0}
-            };
+            var mileage = _repository.GetAllMileages();
 
             MileageGrid.ItemsSource = mileage;
         }
