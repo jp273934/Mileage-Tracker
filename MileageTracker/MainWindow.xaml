@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="MileageGrid"/>
+        <DataGrid x:Name="MileageGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Delivery Date" Binding="{Binding Path=DeliveryDate, StringFormat='d'}"  />
+                <DataGridTextColumn Header="Miles" Binding="{Binding Path=Miles}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

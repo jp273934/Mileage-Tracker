@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MileageTracker.Repository.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace MileageTracker
         public MainWindow()
         {
             InitializeComponent();
+
+            var mileage = new List<Mileage>
+            {
+                new Mileage{ DeliveryDate = DateTime.Today, Miles = 1.0},
+                new Mileage{ DeliveryDate = DateTime.Today, Miles = 3.0}
+            };
+
+            MileageGrid.ItemsSource = mileage;
         }
     }
 }

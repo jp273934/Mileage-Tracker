@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MileageTracker.Repository\MileageTracker.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
